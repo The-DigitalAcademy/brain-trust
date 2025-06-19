@@ -1,5 +1,12 @@
 import java.util.Scanner;
 
 public class Responses {
-    Scanner scanner = new Scanner(System.in);
+
+    public int qId;
+    public String userAnswer;
+
+    Responses(int qId, String userAnswer) {
+        this.qId = qId;
+        this.userAnswer = userAnswer;
+    }
 }
