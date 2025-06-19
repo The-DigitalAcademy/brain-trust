@@ -1,10 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        
+        System.out.println("\n=================================");
+        System.out.println("Welcome to BrainTrust");
+        System.out.println("Where Knowledge Meets Confidence");
+        System.out.println("=================================");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPlease enter your name: ");
+        String name = scanner.nextLine();
+        System.out.println("\nWelcome " + name + " to BrainTrust" + "! You can start the quiz.\n");
+
         Question question1 = new Question(1, "What is your name", "Banele");
         question1.addOption("Banele");
         question1.addOption("Zoe");
@@ -12,8 +20,7 @@ public class Main {
         question1.display();
 
         for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+    
             System.out.println("i = " + i);
         }
     }
