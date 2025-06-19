@@ -13,8 +13,4 @@ public class Welcome {
         String name = scanner.nextLine();
         System.out.println("\nWelcome " + name + " to BrainTrust! You can start the quiz.\n");
     }
-
-    public static void main(String[] args) {
-        showWelcomeMessage();
-    }
 }
