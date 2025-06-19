@@ -6,12 +6,14 @@ public class Question {
     private String question;
     private String answer;
     private List<String> options;
+    private List<String> userResponses;
 
     Question(int id, String question, String answer) {
         this.id = id;
         this.question = question;
         this.answer = answer;
         this.options = new ArrayList<>();
+        this.userResponses = new ArrayList<>();
     }
 
     public void addOption(String option) {
@@ -33,4 +35,11 @@ public class Question {
         return this.id;
     }
 
+    public List<String> getUserResponses() {
+        return userResponses;
+    }
+
+    public void setUserResponses(List<String> userResponses) {
+        this.userResponses = userResponses;
+    }
 }
