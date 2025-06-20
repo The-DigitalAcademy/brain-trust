@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Welcome {
+    public Welcome() {
+        showWelcomeMessage();
+    }
 
     public static void showWelcomeMessage() {
         System.out.println("\n=================================");
