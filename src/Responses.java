@@ -7,6 +7,9 @@ public class Responses {
     private static List<Integer> userScores = new ArrayList<>();
     private static int correctAnswersCount = 0;
 
+    private static int rightCounter = 0;
+
+
     public int questionId;
     public String userAnswer;
 
@@ -19,10 +22,13 @@ public class Responses {
         responseList.add(new Responses(question.getId(), userAnswer));
 
         if (question.getAnswer().equalsIgnoreCase(userAnswer)) {
+
             System.out.println("You got it correct!");
             correctAnswersCount++;
+          rightCounter++;
+          
         } else {
-            System.out.println("You got it wrong!");
+            System.out.println("You got it wrong! \n===================================");
         }
         userScores.add(correctAnswersCount);
     }
@@ -49,4 +55,10 @@ public class Responses {
     public static List<Responses> getAllResponses() {
         return responseList;
     }
+
+
+    public static int getRightCounter(){
+        return rightCounter;
+    }
 }
+

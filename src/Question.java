@@ -31,6 +31,8 @@ public class Question {
         return this.answer;
     }
 
+    public String getQuestion(){return this.question; }
+
     public int getId() {
         return this.id;
     }
