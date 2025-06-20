@@ -7,7 +7,7 @@ public class Responses {
     private static List<Integer> userScores = new ArrayList<>();
     private static int correctAnswersCount = 0;
 
-    private static int rightCounter = 0;
+
 
 
     public int questionId;
@@ -23,12 +23,12 @@ public class Responses {
 
         if (question.getAnswer().equalsIgnoreCase(userAnswer)) {
 
-            System.out.println("You got it correct!");
+            System.out.println("You got it correct!✅");
             correctAnswersCount++;
-          rightCounter++;
+
           
         } else {
-            System.out.println("You got it wrong! \n===================================");
+            System.out.println("You got it wrong!❌ \n================================================");
         }
         userScores.add(correctAnswersCount);
     }
@@ -38,18 +38,29 @@ public class Responses {
         String grade;
 
         if (finalScore >= 8) {
-            grade = "Excellent";
+            grade = "Excellent🔆🔆";
         } else if (finalScore >= 5) {
-            grade = "Pass";
+            grade = "Pass✅";
         } else if (finalScore == 4) {
-            grade = "Supplementary";
+            grade = "Supplementary⭕";
         } else {
-            grade = "Fail";
+            grade = "Fail❌";
         }
 
-        System.out.println("Results for: " + userName);
+
+        System.out.println("You have reached the end of your MCQ test " + userName + ", your results are as follows:");
         System.out.println("Score: " + finalScore + " out of 10");
         System.out.println("Grade: " + grade);
+        if (grade.equals("Fail❌")){
+            System.out.println("Unfortunately you didn't perform well❌ " + userName + " , go work!📙");
+
+        } else if (grade.equals("Supplementary⭕")) {
+            System.out.println("You didn't perform well "  +userName + ", but you qualify for a second shot, so go study📙");
+        } else if (grade.equals("Pass✅")) {
+            System.out.println("Well done✨ " + userName + " --there is still room for more!");
+        }
+        else System.out.println("You are a star ✨ " + userName + "🥇");
+
     }
 
     public static List<Responses> getAllResponses() {
@@ -57,8 +68,6 @@ public class Responses {
     }
 
 
-    public static int getRightCounter(){
-        return rightCounter;
-    }
+
 }
 

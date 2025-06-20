@@ -49,7 +49,7 @@ public class QuestionControl {
             checkUserAns(userAnswer, question, question.getId());
             showNextQuestion();
         } else {
-            displayResults();
+            Responses.displayResults(Welcome.Username);
         }
     }
 
@@ -59,19 +59,5 @@ public class QuestionControl {
 
     }
 
-    public void displayResults(){
-        this.rightCounter = Responses.getRightCounter();
-        double result = (double) this.rightCounter / counter * 100;
 
-        System.out.println("======================\nQuestion Results:\n======================");
-        System.out.println("You got " + rightCounter + " out of " + quizQuestions.size());
-
-        if(result >= 90) {
-            System.out.println("\nYou got " + result + " out of 100 - Genius!!!!");
-        } else if(result <= 75 || result >= 50) {
-            System.out.println("\nYou got " + result + " out of 100 - Good!");
-        } else {
-            System.out.println("\nYou got " + result + " out of 100 - Bad!");
-        }
-    }
 }
