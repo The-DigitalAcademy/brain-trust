@@ -41,6 +41,7 @@ public class QuestionControl {
         if (this.counter < this.quizQuestions.size()) {
             Question question = this.quizQuestions.get(this.counter);
             this.counter++;
+            System.out.println("\n======================\nQuestion "+ counter +" / 10 ");
             question.display();
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nPlease enter your answer: ");
@@ -61,11 +62,13 @@ public class QuestionControl {
     public void displayResults(){
         this.rightCounter = Responses.getRightCounter();
         double result = (double) this.rightCounter / counter * 100;
-        System.out.println("====================== \nQuestion Results: \n ======================");
+
+        System.out.println("======================\nQuestion Results:\n======================");
         System.out.println("You got " + rightCounter + " out of " + quizQuestions.size());
-        if(result > 90) {
+
+        if(result >= 90) {
             System.out.println("\nYou got " + result + " out of 100 - Genius!!!!");
-        } else if(result < 75 && result > 50) {
+        } else if(result <= 75 || result >= 50) {
             System.out.println("\nYou got " + result + " out of 100 - Good!");
         } else {
             System.out.println("\nYou got " + result + " out of 100 - Bad!");

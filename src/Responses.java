@@ -19,10 +19,10 @@ public class Responses {
         responseList.add(new Responses(question.getId(), userAnswer));
 
         if (question.getAnswer().equalsIgnoreCase(userAnswer)) {
-            System.out.println("You got it correct! \n ================================");
+            System.out.println("You got it correct! \n================================");
             rightCounter++;
         } else {
-            System.out.println("You got it wrong! \n ===================================");
+            System.out.println("You got it wrong! \n===================================");
         }
     }
 
