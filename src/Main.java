@@ -12,8 +12,16 @@ public class Main {
         System.out.println("\nPlease enter your name: ");
         String name = scanner.nextLine();
         System.out.println("\nWelcome " + name + " to BrainTrust" + "! You can start the quiz.\n");
-        QuestionControl control = new QuestionControl();
-        control.showNextQuestion();
 
+        Question question1 = new Question(1, "What is your name", "Banele");
+        question1.addOption("Banele");
+        question1.addOption("Zoe");
+
+        question1.display();
+
+        for (int i = 1; i <= 5; i++) {
+    
+            System.out.println("i = " + i);
+        }
     }
 }
