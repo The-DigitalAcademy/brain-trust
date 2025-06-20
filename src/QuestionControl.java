@@ -4,51 +4,68 @@ import java.util.Scanner;
 
 public class QuestionControl {
 
-    private List<Question> allQuestions;
-    private List<Responses> responses;
+    private List<Question> quizQuestions;
 
     private int counter;
     private int rightCounter;
 
     QuestionControl() {
-        CreateQuestions createQuestions = new CreateQuestions();
-        this.allQuestions = createQuestions.getQuestions();
-        this.responses = new ArrayList<Responses>();
+        quizQuestions = new ArrayList<>();
         this.counter = 0;
         this.rightCounter = 0;
+        createRandomQuestions();
+        showNextQuestion();
+    }
+
+    public void createRandomQuestions(){
+        int i = 0;
+        int random;
+        List<Integer> randomize = new ArrayList<>();
+        System.out.println("Im here");
+        while(i < 10){
+            random = (int) (Math.random() * 15);
+            if(randomize.size() == 0 ){
+                randomize.add(random);
+                quizQuestions.add( new CreateQuestions().getQuestions().get(random));
+                i++;
+                System.out.println(quizQuestions.get(i-1).getQuestion() + "\t" + i);
+            }
+            if(!randomize.contains(random)){
+                randomize.add(random);
+                quizQuestions.add( new CreateQuestions().getQuestions().get(random));
+                i++;
+                System.out.println(quizQuestions.get(i-1).getQuestion() + "\t" + i);
+            }
+        }
     }
 
     public void showNextQuestion() {
-        if (this.counter < this.allQuestions.size()) {
-            Question question = this.allQuestions.get(this.counter);
-            counter++;
+        if (this.counter < this.quizQuestions.size()) {
+            Question question = this.quizQuestions.get(this.counter);
+            this.counter++;
             question.display();
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nPlease enter your answer: ");
             String userAnswer = scanner.nextLine();
-
-            boolean correct = checkUserAns(userAnswer, question.getAnswer(), question.getId());
-            updateRightCounter(correct);
+            checkUserAns(userAnswer, question, question.getId());
             showNextQuestion();
         } else {
             displayResults();
         }
     }
 
-    public boolean checkUserAns(String userAnswer, String answer, int id) {
-        responses.add(new Responses(id, userAnswer));
-        return answer.equals(userAnswer)? true : false;
+    public void checkUserAns(String userAnswer, Question question, int id) {
+        Responses response = new Responses(id, userAnswer);
+        response.storeAndCheckUserAnswer(response.userAnswer, question);
 
-    }
-
-    public void updateRightCounter(boolean correct){
-        if(correct) rightCounter++;
     }
 
     public void displayResults(){
-        int result = (int) ((counter - rightCounter) / counter ) * 100;
-        System.out.println("\nQuestion Results:");
-        System.out.println("You got " + rightCounter + " out of " + allQuestions.size());
+        this.rightCounter = Responses.getRightCounter();
+        double result = (double) this.rightCounter / counter * 100;
+        System.out.println("Result: " + result);
+        System.out.println("====================== \nQuestion Results: \n ======================");
+        System.out.println("You got " + rightCounter + " out of " + quizQuestions.size());
         if(result > 90) {
             System.out.println("\nYou got " + result + " out of 100 - Genius!!!!");
         } else if(result < 75 && result > 50) {
