@@ -21,20 +21,18 @@ public class QuestionControl {
         int i = 0;
         int random;
         List<Integer> randomize = new ArrayList<>();
-        System.out.println("Im here");
+
         while(i < 10){
             random = (int) (Math.random() * 15);
             if(randomize.size() == 0 ){
                 randomize.add(random);
                 quizQuestions.add( new CreateQuestions().getQuestions().get(random));
                 i++;
-                System.out.println(quizQuestions.get(i-1).getQuestion() + "\t" + i);
             }
             if(!randomize.contains(random)){
                 randomize.add(random);
                 quizQuestions.add( new CreateQuestions().getQuestions().get(random));
                 i++;
-                System.out.println(quizQuestions.get(i-1).getQuestion() + "\t" + i);
             }
         }
     }
@@ -63,7 +61,6 @@ public class QuestionControl {
     public void displayResults(){
         this.rightCounter = Responses.getRightCounter();
         double result = (double) this.rightCounter / counter * 100;
-        System.out.println("Result: " + result);
         System.out.println("====================== \nQuestion Results: \n ======================");
         System.out.println("You got " + rightCounter + " out of " + quizQuestions.size());
         if(result > 90) {
