@@ -22,8 +22,10 @@ public class Question {
 
     public void display() {
         System.out.println(question);
+        char optionLetter = 'a';
         for (String option : options) {
-            System.out.println("- " + option);
+            System.out.println(optionLetter + ") " + option);
+            optionLetter++;
         }
     }
 
@@ -37,6 +39,10 @@ public class Question {
         return this.id;
     }
 
+    public List<String> getOptions() {
+        return this.options;
+    }
+    
     public List<String> getUserResponses() {
         return userResponses;
     }

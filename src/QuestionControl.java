@@ -43,10 +43,23 @@ public class QuestionControl {
             this.counter++;
             System.out.println("\n======================\nQuestion "+ counter +" / 10 ");
             question.display();
+
             Scanner scanner = new Scanner(System.in);
             System.out.println("\nPlease enter your answer: ");
-            String userAnswer = scanner.nextLine();
-            checkUserAns(userAnswer, question, question.getId());
+            String userAnswer = scanner.nextLine().trim().toLowerCase();
+
+            List<String> options = question.getOptions();
+            String selectedAnswer = null;
+
+             if (!userAnswer.isEmpty() && userAnswer.charAt(0) >= 'a' && userAnswer.charAt(0) < 'a' + options.size()) {
+                int index = userAnswer.charAt(0) - 'a';
+                selectedAnswer = options.get(index);
+        } else {
+                System.out.println("Invalid option. Please choose a valid letter.");
+                this.counter--; 
+                showNextQuestion();
+                return;
+    }checkUserAns(selectedAnswer, question, question.getId());
             showNextQuestion();
         } else {
             displayResults();
