@@ -44,6 +44,7 @@ public class CreateQuestions {
         question6.addOption("USA");
         question6.addOption("UK");
         question6.addOption("RSA");
+        question6.addOption("France");
         questions.add(question6);
         Question question7 = new Question(7, "Who is USA president", "Trump");
         question7.addOption("Mugabe");
